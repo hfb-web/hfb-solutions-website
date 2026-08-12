@@ -59,7 +59,7 @@
     .erp-card p{color:#d6d9df;font-size:14px}
     .contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:45px}
     .contact-item{display:flex;gap:14px;margin:22px 0}
-    .contact-icon{color:#c9922a;font-size:22px}
+    .contact-icon{color:#c9922a;font-size:22px}.contact-item a{color:#0f1b2d;font-weight:600}.contact-item a:hover{color:#c9922a}
     form{background:#fff;border:1px solid #e5e1d8;padding:28px;border-radius:5px}
     label{display:block;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#777;margin:0 0 6px}
     input,textarea{width:100%;padding:12px;border:1px solid #d8d4ca;border-radius:4px;margin-bottom:17px;font:inherit}
@@ -184,19 +184,24 @@
         <div class="eyebrow">Contact</div>
         <h2>Let's talk about your business.</h2>
         <p class="lead">Tell us about your setup and how you want to manage your business with practical software.</p>
-        <div class="contact-item"><span class="contact-icon">✉</span><div><strong>Email</strong><br>hello@hfbsolutions.com</div></div>
-        <div class="contact-item"><span class="contact-icon">☎</span><div><strong>Phone</strong><br>+92 300 0000000</div></div>
+        <div class="contact-item"><span class="contact-icon">✉</span><div><strong>Email</strong><br><a href="mailto:shamilsiki@gmail.com">shamilsiki@gmail.com</a></div></div>
+        <div class="contact-item"><span class="contact-icon">☎</span><div><strong>Phone</strong><br><a href="tel:+923120979959">+923120979959</a></div></div>
+        <div class="contact-item"><span class="contact-icon">💬</span><div><strong>WhatsApp</strong><br><a href="https://wa.me/923459748951" target="_blank" rel="noopener">+923459748951</a></div></div>
         <div class="contact-item"><span class="contact-icon">📍</span><div><strong>Location</strong><br>Pakistan</div></div>
+        <div class="buttons" style="margin-top:10px">
+          <a class="btn btn-primary" href="https://wa.me/923459748951?text=Assalam%20o%20Alaikum%2C%20I%20would%20like%20to%20know%20more%20about%20HFB%20Solutions." target="_blank" rel="noopener">💬 WhatsApp Us</a>
+          <a class="btn btn-light" href="tel:+923120979959">☎ Call Us</a>
+        </div>
       </div>
       <form id="contactForm" onsubmit="sendMessage(event)">
-        <div class="notice" id="notice">Thank you! Your message has been received.</div>
+        <div class="notice" id="notice">Your email app is opening with the message prepared.</div>
         <label>Name</label>
-        <input type="text" required placeholder="Your name">
+        <input id="name" type="text" required placeholder="Your name">
         <label>Email</label>
-        <input type="email" required placeholder="your@email.com">
+        <input id="email" type="email" required placeholder="your@email.com">
         <label>Message</label>
-        <textarea rows="5" required placeholder="Tell us about your requirements..."></textarea>
-        <button class="btn btn-primary" type="submit" style="width:100%">Send message</button>
+        <textarea id="message" rows="5" required placeholder="Tell us about your requirements..."></textarea>
+        <button class="btn btn-primary" type="submit" style="width:100%">✉ Send Message</button>
       </form>
     </div>
   </section>
@@ -221,7 +226,16 @@
   });
   function sendMessage(e){
     e.preventDefault();
-    document.getElementById('contactForm').reset();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const subject = encodeURIComponent('HFB Solutions Website Inquiry');
+    const body = encodeURIComponent(
+      'Name: ' + name + '\n' +
+      'Email: ' + email + '\n\n' +
+      'Message:\n' + message
+    );
+    window.location.href = 'mailto:shamilsiki@gmail.com?subject=' + subject + '&body=' + body;
     document.getElementById('notice').style.display='block';
   }
 </script>
