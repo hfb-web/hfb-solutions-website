@@ -103,7 +103,6 @@ footer{background:#0f1b2d;color:#cbd0d8;padding:38px 0}.footer-row{display:flex;
 <div class="mini-list"><div><span>01</span> Business Software</div><div><span>02</span> ERP & POS Solutions</div><div><span>03</span> Custom Development</div><div><span>04</span> Business Automation</div></div></div></div></section>
 <div class="divider"></div>
 
-
 <section class="visitor-counter-section" aria-label="Website visitor counter">
 <div class="container">
 <div class="visitor-counter">
@@ -180,21 +179,20 @@ footer{background:#0f1b2d;color:#cbd0d8;padding:38px 0}.footer-row{display:flex;
 </main>
 
 <footer><div class="container"><div class="footer-row"><div class="brand"><span class="logo">HFB</span> HFB Solutions</div><p>Practical software and technology solutions for growing businesses.</p></div><div class="copyright">© 2026 HFB Solutions. All rights reserved.</div></div></footer>
+
 <script>
 function toggleMenu(){document.getElementById('navLinks').classList.toggle('open')}
 document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
 
 /* HFB Solutions global visitor counter — GoatCounter */
-window.goatcounter = window.goatcounter || {};
-window.goatcounter.visit_count = window.goatcounter.visit_count || function(opts){
-  var el=document.getElementById('visitorCount');
-  if(el) el.textContent='—';
-  if(opts && typeof opts.callback === 'function') opts.callback(0);
-};
-
 (function(){
   const el=document.getElementById('visitorCount');
   if(!el) return;
+
+  window.goatcounter = window.goatcounter || {};
+  window.goatcounter.visit_count = window.goatcounter.visit_count || function(opts){
+    if(opts && typeof opts.callback === 'function') opts.callback(0);
+  };
 
   const script=document.createElement('script');
   script.async=true;
@@ -214,13 +212,24 @@ window.goatcounter.visit_count = window.goatcounter.visit_count || function(opts
             if(el) el.textContent=Number(count || 0).toLocaleString();
           }
         });
-      }catch(e){}
+      }catch(e){
+        if(el) el.textContent='—';
+      }
     }
     if(tries>100) clearInterval(timer);
   },100);
 })();
 
-function sendMessage(e){e.preventDefault();const name=document.getElementById('name').value.trim();const email=document.getElementById('email').value.trim();const message=document.getElementById('message').value.trim();const subject=encodeURIComponent('HFB Solutions Website Inquiry');const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\n\nMessage:\n'+message);document.getElementById('notice').style.display='block';window.location.href='mailto:hfbsolutions.2026@gmail.com?subject='+subject+'&body='+body}
+function sendMessage(e){
+e.preventDefault();
+const name=document.getElementById('name').value.trim();
+const email=document.getElementById('email').value.trim();
+const message=document.getElementById('message').value.trim();
+const subject=encodeURIComponent('HFB Solutions Website Inquiry');
+const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\n\nMessage:\n'+message);
+document.getElementById('notice').style.display='block';
+window.location.href='mailto:hfbsolutions.2026@gmail.com?subject='+subject+'&body='+body;
+}
 </script>
 </body>
 </html>
