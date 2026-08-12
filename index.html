@@ -1,243 +1,320 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="HFB Solutions - Practical software for garment businesses.">
-  <title>HFB Solutions | Garments ERP</title>
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{font-family:Arial,Helvetica,sans-serif;background:#f7f5f1;color:#0f1b2d;line-height:1.6}
-    a{text-decoration:none;color:inherit}
-    button{font:inherit;cursor:pointer}
-    .container{width:min(1120px,92%);margin:auto}
-    header{position:sticky;top:0;z-index:1000;background:#0f1b2d;color:#fff;box-shadow:0 2px 12px #0002}
-    .nav{height:70px;display:flex;align-items:center;justify-content:space-between}
-    .brand{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:700}
-    .logo{width:38px;height:38px;background:#c9922a;color:#0f1b2d;display:grid;place-items:center;font-weight:800;border-radius:5px}
-    .links{display:flex;gap:6px;list-style:none}
-    .links a{padding:10px 15px;border-radius:4px;font-size:14px;color:#fff}
-    .links a:hover,.links a.active{background:#c9922a;color:#0f1b2d}
-    .menu{display:none;background:none;border:0;color:#fff;font-size:28px}
-    section{padding:80px 0}
-    .hero{padding:95px 0 85px}
-    .hero-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:55px;align-items:center}
-    .eyebrow{color:#c9922a;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:15px}
-    h1{font-family:Georgia,serif;font-size:clamp(42px,6vw,70px);line-height:1.05;margin-bottom:25px}
-    h2{font-family:Georgia,serif;font-size:42px;line-height:1.15;margin-bottom:15px}
-    h3{font-size:18px;margin-bottom:8px}
-    .lead{font-size:18px;color:#4b4b4b;max-width:650px}
-    .buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-    .btn{display:inline-block;padding:13px 21px;border-radius:4px;font-weight:700;border:2px solid #0f1b2d}
-    .btn-primary{background:#0f1b2d;color:#fff}
-    .btn-primary:hover{background:#1c3a5e}
-    .btn-light{background:transparent}
-    .btn-light:hover{background:#fff}
-    .dashboard{background:#0f1b2d;color:#fff;padding:28px;border-radius:7px;box-shadow:0 18px 40px #0f1b2d22}
-    .dash-title{color:#c9922a;font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px}
-    .bar-row{margin:18px 0}
-    .bar-label{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px}
-    .bar-value{color:#c9922a}
-    .bar{height:7px;background:#ffffff18;border-radius:10px;overflow:hidden}
-    .fill{height:100%;background:#c9922a;border-radius:10px}
-    .divider{height:2px;background:repeating-linear-gradient(90deg,#c9922a 0 10px,transparent 10px 20px)}
-    .section-head{margin-bottom:38px}
-    .section-head p{color:#666;max-width:650px}
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card{background:#fff;border:1px solid #e5e1d8;padding:25px;border-radius:5px;transition:.2s}
-    .card:hover{transform:translateY(-4px);box-shadow:0 12px 28px #0f1b2d20}
-    .icon{font-size:28px;color:#c9922a;margin-bottom:13px}
-    .card p{font-size:14px;color:#606060}
-    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:start}
-    .values{display:grid;gap:15px}
-    .value{background:#fff;border:1px solid #e5e1d8;padding:22px}
-    .erp{background:#0f1b2d;color:#fff}
-    .erp .section-head p{color:#d5d8dd}
-    .erp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-    .erp-card{border:1px solid #ffffff18;padding:25px;border-radius:5px}
-    .erp-card p{color:#d6d9df;font-size:14px}
-    .contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:45px}
-    .contact-item{display:flex;gap:14px;margin:22px 0}
-    .contact-icon{color:#c9922a;font-size:22px}.contact-item a{color:#0f1b2d;font-weight:600}.contact-item a:hover{color:#c9922a}
-    form{background:#fff;border:1px solid #e5e1d8;padding:28px;border-radius:5px}
-    label{display:block;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#777;margin:0 0 6px}
-    input,textarea{width:100%;padding:12px;border:1px solid #d8d4ca;border-radius:4px;margin-bottom:17px;font:inherit}
-    input:focus,textarea:focus{outline:2px solid #c9922a44;border-color:#c9922a}
-    textarea{resize:vertical}
-    footer{background:#0f1b2d;color:#cbd0d8;padding:38px 0}
-    .footer-row{display:flex;justify-content:space-between;gap:30px;align-items:center}
-    .copyright{text-align:center;font-size:12px;border-top:1px solid #ffffff15;margin-top:25px;padding-top:20px}
-    .notice{display:none;padding:15px;background:#e8f4eb;color:#28613b;border-radius:4px;margin-bottom:15px}
-    @media(max-width:800px){
-      .links{display:none;position:absolute;top:70px;left:0;width:100%;background:#0f1b2d;flex-direction:column;padding:12px 5%;border-top:1px solid #ffffff15}
-      .links.open{display:flex}
-      .menu{display:block}
-      .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
-      .cards{grid-template-columns:1fr 1fr}
-      .hero{padding-top:65px}
-    }
-    @media(max-width:560px){
-      section{padding:60px 0}
-      .cards,.erp-grid{grid-template-columns:1fr}
-      h2{font-size:34px}
-      .footer-row{flex-direction:column;align-items:flex-start}
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="HFB Solutions - Software, ERP, POS and business technology solutions.">
+<title>HFB Solutions | Software & Technology Solutions</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:#f7f5f1;color:#0f1b2d;line-height:1.6}
+a{text-decoration:none;color:inherit}
+button{font:inherit;cursor:pointer}
+.container{width:min(1120px,92%);margin:auto}
+header{position:sticky;top:0;z-index:1000;background:#0f1b2d;color:#fff;box-shadow:0 2px 14px #0002}
+.nav{height:70px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:700}
+.logo{width:40px;height:40px;background:#c9922a;color:#0f1b2d;display:grid;place-items:center;font-weight:800;border-radius:5px}
+.links{display:flex;gap:4px;list-style:none}
+.links a{display:block;padding:10px 13px;border-radius:4px;font-size:14px;color:#fff}
+.links a:hover{background:#c9922a;color:#0f1b2d}
+.menu{display:none;background:none;border:0;color:#fff;font-size:28px}
+section{padding:82px 0}
+.hero{padding:105px 0 90px}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:60px;align-items:center}
+.eyebrow{color:#c9922a;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:15px}
+h1,h2{font-family:Georgia,serif;line-height:1.1}
+h1{font-size:clamp(42px,6vw,70px);margin-bottom:24px}
+h2{font-size:42px;margin-bottom:16px}
+h3{font-size:18px;margin-bottom:8px}
+.lead{font-size:18px;color:#505050;max-width:680px}
+.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-block;padding:13px 21px;border-radius:4px;font-weight:700;border:2px solid #0f1b2d}
+.btn-primary{background:#0f1b2d;color:#fff}
+.btn-primary:hover{background:#1c3a5e}
+.btn-light{background:transparent}
+.btn-light:hover{background:#fff}
+.hero-card{background:#0f1b2d;color:#fff;padding:32px;border-radius:7px}
+.hero-card .big{font-family:Georgia,serif;font-size:32px;margin-bottom:12px}
+.hero-card p{color:#d8dce2;font-size:14px}
+.mini-list{margin-top:22px;display:grid;gap:12px}
+.mini-list div{border-top:1px solid #ffffff1c;padding-top:10px;color:#fff;font-size:14px}
+.mini-list span{color:#c9922a;font-weight:bold;margin-right:8px}
+.divider{height:2px;background:repeating-linear-gradient(90deg,#c9922a 0 10px,transparent 10px 20px)}
+.section-head{margin-bottom:38px}
+.section-head p{color:#666;max-width:700px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:#fff;border:1px solid #e5e1d8;padding:25px;border-radius:5px;transition:.2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 28px #0f1b2d20}
+.icon{font-size:28px;color:#c9922a;margin-bottom:12px}
+.card p{font-size:14px;color:#606060}
+.products{background:#fff}
+.product-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.product{border:1px solid #e5e1d8;padding:25px;border-radius:5px;background:#fdfcf9}
+.product.featured{border:2px solid #c9922a;background:#fff}
+.badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 8px;border-radius:3px;background:#0f1b2d;color:#fff;margin-bottom:13px}
+.badge.soon{background:#e8e3d8;color:#625c4f}
+.product p{font-size:14px;color:#606060;margin:8px 0 18px}
+.product-link{font-weight:700;color:#0f1b2d}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px}
+.values{display:grid;gap:15px}
+.value{background:#fff;border:1px solid #e5e1d8;padding:22px}
+.portfolio{background:#0f1b2d;color:#fff}
+.portfolio .section-head p{color:#d7dae0}
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.port-card{border:1px solid #ffffff18;padding:24px;border-radius:5px}
+.port-card p{font-size:14px;color:#d5d8de}
+.cta{background:#c9922a;color:#0f1b2d}
+.cta-box{display:flex;justify-content:space-between;gap:25px;align-items:center}
+.cta h2{margin:0}
+.cta .btn{border-color:#0f1b2d}
+.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:45px}
+.contact-item{display:flex;gap:14px;margin:20px 0}
+.contact-icon{color:#c9922a;font-size:22px}
+.contact-item a{font-weight:600}
+.contact-item a:hover{color:#c9922a}
+form{background:#fff;border:1px solid #e5e1d8;padding:28px;border-radius:5px}
+label{display:block;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#777;margin-bottom:6px}
+input,textarea{width:100%;padding:12px;border:1px solid #d8d4ca;border-radius:4px;margin-bottom:17px;font:inherit}
+textarea{resize:vertical}
+.notice{display:none;background:#e8f4eb;color:#28613b;padding:12px;border-radius:4px;margin-bottom:15px;font-size:14px}
+footer{background:#0f1b2d;color:#cbd0d8;padding:38px 0}
+.footer-row{display:flex;justify-content:space-between;gap:30px;align-items:center}
+.copyright{text-align:center;font-size:12px;border-top:1px solid #ffffff15;margin-top:25px;padding-top:20px}
+@media(max-width:800px){
+.links{display:none;position:absolute;top:70px;left:0;width:100%;background:#0f1b2d;flex-direction:column;padding:12px 5%;border-top:1px solid #ffffff15}
+.links.open{display:flex}
+.menu{display:block}
+.hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+.cards,.portfolio-grid{grid-template-columns:1fr 1fr}
+.cta-box{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:560px){
+section{padding:60px 0}
+.cards,.product-grid,.portfolio-grid{grid-template-columns:1fr}
+h2{font-size:34px}
+.footer-row{flex-direction:column;align-items:flex-start}
+}
+</style>
 </head>
 <body>
 
 <header>
-  <div class="container nav">
-    <a class="brand" href="#home"><span class="logo">HFB</span> HFB Solutions</a>
-    <button class="menu" onclick="toggleMenu()" aria-label="Open menu">☰</button>
-    <nav>
-      <div class="links" id="navLinks">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#products">Products</a>
-        <a href="#erp">Garments ERP</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
-  </div>
+<div class="container nav">
+<a class="brand" href="#home"><span class="logo">HFB</span> HFB Solutions</a>
+<button class="menu" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+<nav>
+<div class="links" id="navLinks">
+<a href="#home">Home</a>
+<a href="#services">Services</a>
+<a href="#products">Products</a>
+<a href="#about">About</a>
+<a href="#portfolio">Portfolio</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+</div>
 </header>
 
 <main>
-  <section class="hero" id="home">
-    <div class="container hero-grid">
-      <div>
-        <div class="eyebrow">Software built for the factory floor</div>
-        <h1>We build the systems that run garment businesses.</h1>
-        <p class="lead">HFB Solutions creates practical business software. Our flagship Garments ERP brings production, inventory, orders, costing and dispatch into one organized system.</p>
-        <div class="buttons">
-          <a class="btn btn-primary" href="#erp">Explore Garments ERP →</a>
-          <a class="btn btn-light" href="#contact">Talk to us</a>
-        </div>
-      </div>
-      <div class="dashboard">
-        <div class="dash-title">Production line — live</div>
-        <div class="bar-row"><div class="bar-label"><span>Cutting</span><span class="bar-value">412 pcs</span></div><div class="bar"><div class="fill" style="width:100%"></div></div></div>
-        <div class="bar-row"><div class="bar-label"><span>Stitching</span><span class="bar-value">286 pcs</span></div><div class="bar"><div class="fill" style="width:68%"></div></div></div>
-        <div class="bar-row"><div class="bar-label"><span>Finishing</span><span class="bar-value">190 pcs</span></div><div class="bar"><div class="fill" style="width:46%"></div></div></div>
-        <div class="bar-row"><div class="bar-label"><span>Packing</span><span class="bar-value">95 pcs</span></div><div class="bar"><div class="fill" style="width:22%"></div></div></div>
-      </div>
-    </div>
-  </section>
 
-  <div class="divider"></div>
+<section class="hero" id="home">
+<div class="container hero-grid">
+<div>
+<div class="eyebrow">Software & Technology Solutions</div>
+<h1>Practical software for modern businesses.</h1>
+<p class="lead">HFB Solutions develops business software, ERP systems, POS solutions and custom digital tools designed around the way real businesses work.</p>
+<div class="buttons">
+<a class="btn btn-primary" href="#products">Explore Our Products →</a>
+<a class="btn btn-light" href="#contact">Get in Touch</a>
+</div>
+</div>
+<div class="hero-card">
+<div class="big">Technology that works for your business.</div>
+<p>We focus on practical systems that simplify daily operations, improve visibility and help businesses manage their work from one place.</p>
+<div class="mini-list">
+<div><span>01</span> Business Software</div>
+<div><span>02</span> ERP & POS Solutions</div>
+<div><span>03</span> Custom Development</div>
+<div><span>04</span> Business Automation</div>
+</div>
+</div>
+</div>
+</section>
 
-  <section id="products">
-    <div class="container">
-      <div class="section-head">
-        <div class="eyebrow">What Garments ERP covers</div>
-        <h2>One system, every stage of production.</h2>
-        <p>Designed around practical garment-business workflows instead of disconnected registers and spreadsheets.</p>
-      </div>
-      <div class="cards">
-        <div class="card"><div class="icon">✂</div><h3>Cutting & Consumption</h3><p>Track fabric consumption per style, size and lay plan.</p></div>
-        <div class="card"><div class="icon">⚙</div><h3>Production Tracking</h3><p>Track stitching progress from bundle to finished production.</p></div>
-        <div class="card"><div class="icon">▣</div><h3>Inventory</h3><p>Keep raw material, trims and finished stock organized.</p></div>
-        <div class="card"><div class="icon">☷</div><h3>Order Management</h3><p>Manage buyer orders, order sheets and delivery timelines.</p></div>
-        <div class="card"><div class="icon">₨</div><h3>Costing & Payroll</h3><p>Support per-piece costing and operator wage calculations.</p></div>
-        <div class="card"><div class="icon">➜</div><h3>Dispatch & Shipping</h3><p>Maintain packing lists, cartons and shipment records.</p></div>
-      </div>
-    </div>
-  </section>
+<div class="divider"></div>
 
-  <section id="about">
-    <div class="container about-grid">
-      <div>
-        <div class="eyebrow">About HFB Solutions</div>
-        <h2>A software house that starts with one problem, solved properly.</h2>
-        <p class="lead">HFB Solutions builds practical software for businesses that run on process, not paperwork. Our first product is Garments ERP — a system for garment manufacturing covering cutting, stitching, inventory, orders, costing and dispatch.</p>
-      </div>
-      <div class="values">
-        <div class="value"><h3>🏭 Built from the floor up</h3><p>Designed around real production workflows.</p></div>
-        <div class="value"><h3>✓ Reliable by default</h3><p>Software intended to support everyday business operations.</p></div>
-        <div class="value"><h3>▦ One product at a time</h3><p>Focused on building useful industry-specific systems.</p></div>
-      </div>
-    </div>
-  </section>
+<section id="services">
+<div class="container">
+<div class="section-head">
+<div class="eyebrow">Our Services</div>
+<h2>Solutions built around your business.</h2>
+<p>From ready-made business products to custom software, HFB Solutions focuses on useful technology rather than unnecessary complexity.</p>
+</div>
+<div class="cards">
+<div class="card"><div class="icon">▣</div><h3>Custom Software Development</h3><p>Business applications designed for specific workflows, requirements and operations.</p></div>
+<div class="card"><div class="icon">▦</div><h3>ERP Solutions</h3><p>Integrated systems for managing products, customers, sales, inventory, production and business data.</p></div>
+<div class="card"><div class="icon">₨</div><h3>POS Solutions</h3><p>Point-of-sale systems for businesses that need faster sales, stock and customer management.</p></div>
+<div class="card"><div class="icon">⌘</div><h3>Web Development</h3><p>Professional business websites and web-based applications for growing companies.</p></div>
+<div class="card"><div class="icon">⚙</div><h3>Business Automation</h3><p>Reduce repetitive work by turning manual processes into organized digital workflows.</p></div>
+<div class="card"><div class="icon">☁</div><h3>Data & Management Systems</h3><p>Structured databases and management tools that keep important business information organized.</p></div>
+</div>
+</div>
+</section>
 
-  <section class="erp" id="erp">
-    <div class="container">
-      <div class="section-head">
-        <div class="eyebrow">Flagship product</div>
-        <h2>Garments ERP</h2>
-        <p>A production and business management system for garment manufacturers, organized around the factory workflow.</p>
-      </div>
-      <div class="erp-grid">
-        <div class="erp-card"><div class="icon">📏</div><h3>Cutting & Fabric Consumption</h3><p>Lay planning, fabric consumption and cutting reports.</p></div>
-        <div class="erp-card"><div class="icon">✂</div><h3>Production Tracking</h3><p>Track production progress by operation, line and style.</p></div>
-        <div class="erp-card"><div class="icon">📦</div><h3>Inventory Management</h3><p>Manage raw materials, trims, accessories and finished goods.</p></div>
-        <div class="erp-card"><div class="icon">📋</div><h3>Order Management</h3><p>Track buyer orders, style-wise sheets and delivery timelines.</p></div>
-        <div class="erp-card"><div class="icon">₨</div><h3>Costing & Payroll</h3><p>Calculate costing and operator wages from production data.</p></div>
-        <div class="erp-card"><div class="icon">🚚</div><h3>Dispatch & Shipping</h3><p>Maintain packing lists, cartons and shipment records.</p></div>
-      </div>
-    </div>
-  </section>
+<section class="products" id="products">
+<div class="container">
+<div class="section-head">
+<div class="eyebrow">Our Products</div>
+<h2>Business software from HFB Solutions.</h2>
+<p>Garments ERP is our first flagship product. Additional industry-specific solutions can be introduced as they are developed.</p>
+</div>
+<div class="product-grid">
+<div class="product featured">
+<span class="badge">Available / Flagship Product</span>
+<h3>Garments ERP</h3>
+<p>Production and business management for garment businesses, covering inventory, orders, production, costing and dispatch.</p>
+<a class="product-link" href="#garments">View Garments ERP →</a>
+</div>
+<div class="product">
+<span class="badge soon">Coming Soon</span>
+<h3>Garments POS</h3>
+<p>A planned point-of-sale solution for garment retail operations, sales and stock management.</p>
+</div>
+<div class="product">
+<span class="badge soon">Coming Soon</span>
+<h3>Grocery ERP</h3>
+<p>An industry-specific business management solution planned for grocery and retail operations.</p>
+</div>
+<div class="product">
+<span class="badge soon">Coming Soon</span>
+<h3>Pharmacy ERP</h3>
+<p>A planned solution for pharmacy sales, inventory and business management.</p>
+</div>
+<div class="product">
+<span class="badge soon">Coming Soon</span>
+<h3>School Management System</h3>
+<p>A planned system for managing school administration, students, records and daily operations.</p>
+</div>
+<div class="product">
+<span class="badge soon">Coming Soon</span>
+<h3>Hospital Management System</h3>
+<p>A planned industry-specific management solution for healthcare organizations.</p>
+</div>
+</div>
+</div>
+</section>
 
-  <section id="contact">
-    <div class="container contact-grid">
-      <div>
-        <div class="eyebrow">Contact</div>
-        <h2>Let's talk about your business.</h2>
-        <p class="lead">Tell us about your setup and how you want to manage your business with practical software.</p>
-        <div class="contact-item"><span class="contact-icon">✉</span><div><strong>Email</strong><br><a href="mailto:shamilsiki@gmail.com">shamilsiki@gmail.com</a></div></div>
-        <div class="contact-item"><span class="contact-icon">☎</span><div><strong>Phone</strong><br><a href="tel:+923120979959">+923120979959</a></div></div>
-        <div class="contact-item"><span class="contact-icon">💬</span><div><strong>WhatsApp</strong><br><a href="https://wa.me/923459748951" target="_blank" rel="noopener">+923459748951</a></div></div>
-        <div class="contact-item"><span class="contact-icon">📍</span><div><strong>Location</strong><br>Pakistan</div></div>
-        <div class="buttons" style="margin-top:10px">
-          <a class="btn btn-primary" href="https://wa.me/923459748951?text=Assalam%20o%20Alaikum%2C%20I%20would%20like%20to%20know%20more%20about%20HFB%20Solutions." target="_blank" rel="noopener">💬 WhatsApp Us</a>
-          <a class="btn btn-light" href="tel:+923120979959">☎ Call Us</a>
-        </div>
-      </div>
-      <form id="contactForm" onsubmit="sendMessage(event)">
-        <div class="notice" id="notice">Your email app is opening with the message prepared.</div>
-        <label>Name</label>
-        <input id="name" type="text" required placeholder="Your name">
-        <label>Email</label>
-        <input id="email" type="email" required placeholder="your@email.com">
-        <label>Message</label>
-        <textarea id="message" rows="5" required placeholder="Tell us about your requirements..."></textarea>
-        <button class="btn btn-primary" type="submit" style="width:100%">✉ Send Message</button>
-      </form>
-    </div>
-  </section>
+<section id="garments">
+<div class="container">
+<div class="section-head">
+<div class="eyebrow">Flagship Product</div>
+<h2>Garments ERP</h2>
+<p>A practical management system designed around garment-business workflows. This is the first major product in the HFB Solutions product family.</p>
+</div>
+<div class="cards">
+<div class="card"><div class="icon">📦</div><h3>Inventory</h3><p>Manage products, stock quantities, raw materials and finished goods.</p></div>
+<div class="card"><div class="icon">📋</div><h3>Orders & Sales</h3><p>Keep customer orders, sales and business records organized.</p></div>
+<div class="card"><div class="icon">⚙</div><h3>Production</h3><p>Track garment production workflows and progress.</p></div>
+<div class="card"><div class="icon">₨</div><h3>Costing</h3><p>Support business costing and production-related calculations.</p></div>
+<div class="card"><div class="icon">🚚</div><h3>Dispatch</h3><p>Keep packing and shipment information organized.</p></div>
+<div class="card"><div class="icon">📊</div><h3>Reports</h3><p>Bring important business information together for better decisions.</p></div>
+</div>
+</div>
+</section>
+
+<section id="about">
+<div class="container about-grid">
+<div>
+<div class="eyebrow">About HFB Solutions</div>
+<h2>A software house focused on practical solutions.</h2>
+<p class="lead">HFB Solutions builds technology for businesses that want to replace scattered paperwork and disconnected processes with organized digital systems.</p>
+</div>
+<div class="values">
+<div class="value"><h3>Business-first thinking</h3><p>We start with the real workflow and then build the technology around it.</p></div>
+<div class="value"><h3>Practical products</h3><p>Our goal is useful software that businesses can actually use every day.</p></div>
+<div class="value"><h3>Growing product family</h3><p>Garments ERP is the first product, with more industry-specific solutions planned for the future.</p></div>
+</div>
+</div>
+</section>
+
+<section class="portfolio" id="portfolio">
+<div class="container">
+<div class="section-head">
+<div class="eyebrow">Portfolio</div>
+<h2>What we're building.</h2>
+<p>Our product portfolio starts with garment-business software and can grow into solutions for other industries.</p>
+</div>
+<div class="portfolio-grid">
+<div class="port-card"><h3>Garments ERP</h3><p>Flagship business and production management software.</p></div>
+<div class="port-card"><h3>Business Websites</h3><p>Professional web presence for businesses and organizations.</p></div>
+<div class="port-card"><h3>Custom Solutions</h3><p>Software concepts and applications built around specific business requirements.</p></div>
+</div>
+</div>
+</section>
+
+<section class="cta">
+<div class="container cta-box">
+<div><div class="eyebrow">Let's work together</div><h2>Have a software idea?</h2></div>
+<a class="btn" href="#contact">Contact HFB Solutions →</a>
+</div>
+</section>
+
+<section id="contact">
+<div class="container contact-grid">
+<div>
+<div class="eyebrow">Contact</div>
+<h2>Let's talk about your business.</h2>
+<p class="lead">Tell us what you need and we'll discuss the right software or technology solution for your business.</p>
+<div class="contact-item"><span class="contact-icon">✉</span><div><strong>Email</strong><br><a href="mailto:shamilsiki@gmail.com">shamilsiki@gmail.com</a></div></div>
+<div class="contact-item"><span class="contact-icon">☎</span><div><strong>Phone</strong><br><a href="tel:+923120979959">+923120979959</a></div></div>
+<div class="contact-item"><span class="contact-icon">💬</span><div><strong>WhatsApp</strong><br><a href="https://wa.me/923459748951" target="_blank" rel="noopener">+923459748951</a></div></div>
+<div class="contact-item"><span class="contact-icon">📍</span><div><strong>Location</strong><br>Pakistan</div></div>
+<div class="buttons" style="margin-top:10px">
+<a class="btn btn-primary" href="https://wa.me/923459748951?text=Assalam%20o%20Alaikum%2C%20I%20would%20like%20to%20know%20more%20about%20HFB%20Solutions." target="_blank" rel="noopener">💬 WhatsApp Us</a>
+<a class="btn btn-light" href="tel:+923120979959">☎ Call Us</a>
+</div>
+</div>
+
+<form id="contactForm" onsubmit="sendMessage(event)">
+<div class="notice" id="notice">Your email app is opening with the message prepared.</div>
+<label>Name</label>
+<input id="name" type="text" required placeholder="Your name">
+<label>Email</label>
+<input id="email" type="email" required placeholder="your@email.com">
+<label>Message</label>
+<textarea id="message" rows="5" required placeholder="Tell us about your requirements..."></textarea>
+<button class="btn btn-primary" type="submit" style="width:100%">✉ Send Message</button>
+</form>
+</div>
+</section>
+
 </main>
 
 <footer>
-  <div class="container">
-    <div class="footer-row">
-      <div class="brand"><span class="logo">HFB</span> HFB Solutions</div>
-      <p>Practical software, built for how the work actually happens.</p>
-    </div>
-    <div class="copyright">© 2026 HFB Solutions. All rights reserved.</div>
-  </div>
+<div class="container">
+<div class="footer-row">
+<div class="brand"><span class="logo">HFB</span> HFB Solutions</div>
+<p>Practical software and technology solutions for growing businesses.</p>
+</div>
+<div class="copyright">© 2026 HFB Solutions. All rights reserved.</div>
+</div>
 </footer>
 
 <script>
-  function toggleMenu(){
-    document.getElementById('navLinks').classList.toggle('open');
-  }
-  document.querySelectorAll('#navLinks a').forEach(a=>{
-    a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open'));
-  });
-  function sendMessage(e){
-    e.preventDefault();
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
-    const subject = encodeURIComponent('HFB Solutions Website Inquiry');
-    const body = encodeURIComponent(
-      'Name: ' + name + '\n' +
-      'Email: ' + email + '\n\n' +
-      'Message:\n' + message
-    );
-    window.location.href = 'mailto:shamilsiki@gmail.com?subject=' + subject + '&body=' + body;
-    document.getElementById('notice').style.display='block';
-  }
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open')}
+document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+function sendMessage(e){
+e.preventDefault();
+const name=document.getElementById('name').value.trim();
+const email=document.getElementById('email').value.trim();
+const message=document.getElementById('message').value.trim();
+const subject=encodeURIComponent('HFB Solutions Website Inquiry');
+const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\n\nMessage:\n'+message);
+document.getElementById('notice').style.display='block';
+window.location.href='mailto:shamilsiki@gmail.com?subject='+subject+'&body='+body;
+}
 </script>
 </body>
 </html>
