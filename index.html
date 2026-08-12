@@ -59,6 +59,22 @@ input,textarea{width:100%;padding:12px;border:1px solid #d8d4ca;border-radius:4p
 .sticky-orange{background:#ffd18c;transform:rotate(-1.4deg)}.sticky-purple{background:#d9c0ff;transform:rotate(1.2deg)}
 .sticky-cyan{background:#aeeff0;transform:rotate(-1deg)}.sticky-gold{background:#ffe38f;transform:rotate(.8deg)}
 .sticky-cta{margin-top:22px;text-align:center}.sticky-cta span{display:inline-block;background:#0f1b2d;color:#fff;padding:10px 16px;border-radius:4px;font-size:13px;font-weight:700}
+
+/* HFB Solutions Visitor Counter */
+.visitor-counter-section{padding:28px 0 0;background:#f7f5f1}
+.visitor-counter{background:#0f1b2d;color:#fff;border:1px solid #c9922a;border-radius:10px;padding:22px 26px;display:flex;align-items:center;justify-content:space-between;gap:20px;box-shadow:0 12px 28px #0f1b2d20}
+.visitor-counter-label{display:flex;align-items:center;gap:14px}
+.visitor-counter-icon{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#c9922a;color:#0f1b2d;font-size:24px}
+.visitor-counter-label strong{display:block;font-size:17px}
+.visitor-counter-label small{display:block;color:#cbd0d8;margin-top:2px}
+.visitor-counter-number{font-family:Georgia,serif;color:#c9922a;font-size:34px;font-weight:700;min-width:100px;text-align:right}
+.visitor-counter-note{text-align:center;color:#6b7280;font-size:11px;margin-top:8px}
+@media(max-width:560px){
+.visitor-counter{padding:18px;align-items:flex-start}
+.visitor-counter-number{font-size:28px;min-width:auto}
+.visitor-counter-label strong{font-size:15px}
+}
+
 footer{background:#0f1b2d;color:#cbd0d8;padding:38px 0}.footer-row{display:flex;justify-content:space-between;gap:30px;align-items:center}
 .copyright{text-align:center;font-size:12px;border-top:1px solid #ffffff15;margin-top:25px;padding-top:20px}
 @media(max-width:900px){.sticky-grid{grid-template-columns:repeat(2,1fr)}}
@@ -86,6 +102,20 @@ footer{background:#0f1b2d;color:#cbd0d8;padding:38px 0}.footer-row{display:flex;
 <p>We focus on practical systems that simplify daily operations, improve visibility and help businesses manage their work from one place.</p>
 <div class="mini-list"><div><span>01</span> Business Software</div><div><span>02</span> ERP & POS Solutions</div><div><span>03</span> Custom Development</div><div><span>04</span> Business Automation</div></div></div></div></section>
 <div class="divider"></div>
+
+
+<section class="visitor-counter-section" aria-label="Website visitor counter">
+<div class="container">
+<div class="visitor-counter">
+<div class="visitor-counter-label">
+<div class="visitor-counter-icon">👥</div>
+<div><strong>Website Visitors</strong><small>Thank you for visiting HFB Solutions</small></div>
+</div>
+<div class="visitor-counter-number" id="visitorCount" aria-live="polite">0</div>
+</div>
+<div class="visitor-counter-note">Live total visits from visitors to the HFB Solutions website.</div>
+</div>
+</section>
 
 <section id="services"><div class="container"><div class="section-head"><div class="eyebrow">Our Services</div><h2>Solutions built around your business.</h2><p>From ready-made business products to custom software, HFB Solutions focuses on useful technology rather than unnecessary complexity.</p></div>
 <div class="cards">
@@ -153,6 +183,43 @@ footer{background:#0f1b2d;color:#cbd0d8;padding:38px 0}.footer-row{display:flex;
 <script>
 function toggleMenu(){document.getElementById('navLinks').classList.toggle('open')}
 document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+
+/* HFB Solutions global visitor counter — GoatCounter */
+window.goatcounter = window.goatcounter || {};
+window.goatcounter.visit_count = window.goatcounter.visit_count || function(opts){
+  var el=document.getElementById('visitorCount');
+  if(el) el.textContent='—';
+  if(opts && typeof opts.callback === 'function') opts.callback(0);
+};
+
+(function(){
+  const el=document.getElementById('visitorCount');
+  if(!el) return;
+
+  const script=document.createElement('script');
+  script.async=true;
+  script.setAttribute('data-goatcounter','https://hfbsolutions2026.goatcounter.com/count');
+  script.src='https://gc.zgo.at/count.js';
+  document.head.appendChild(script);
+
+  let tries=0;
+  const timer=setInterval(function(){
+    tries++;
+    if(window.goatcounter && typeof window.goatcounter.visit_count==='function'){
+      clearInterval(timer);
+      try{
+        window.goatcounter.visit_count({
+          append:false,
+          callback:function(count){
+            if(el) el.textContent=Number(count || 0).toLocaleString();
+          }
+        });
+      }catch(e){}
+    }
+    if(tries>100) clearInterval(timer);
+  },100);
+})();
+
 function sendMessage(e){e.preventDefault();const name=document.getElementById('name').value.trim();const email=document.getElementById('email').value.trim();const message=document.getElementById('message').value.trim();const subject=encodeURIComponent('HFB Solutions Website Inquiry');const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\n\nMessage:\n'+message);document.getElementById('notice').style.display='block';window.location.href='mailto:hfbsolutions.2026@gmail.com?subject='+subject+'&body='+body}
 </script>
 </body>
