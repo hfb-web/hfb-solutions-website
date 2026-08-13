@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="HFB Solutions - Software, ERP, POS and business technology solutions.">
+<link rel="canonical" href="https://hfb-web.github.io/hfb-solutions-website/">
 <title>HFB Solutions | Software & Technology Solutions</title>
 
-<!-- GoatCounter: records visits and powers the real visitor counter -->
+<!-- GoatCounter: records real website visits -->
 <script data-goatcounter="https://hfbsolutions2026.goatcounter.com/count"
         async src="https://gc.zgo.at/count.js"></script>
 
@@ -47,6 +48,18 @@ h3{font-size:18px;margin-bottom:8px}
 .mini-list div{border-top:1px solid #ffffff1c;padding-top:10px;color:#fff;font-size:14px}
 .mini-list span{color:#c9922a;font-weight:bold;margin-right:8px}
 .divider{height:2px;background:repeating-linear-gradient(90deg,#c9922a 0 10px,transparent 10px 20px)}
+
+.live-counter-section{padding:34px 0 42px;background:#f7f5f1}
+.live-counter-title{text-align:center;color:#0f1b2d;margin-bottom:16px}
+.live-counter-title .eyebrow{margin-bottom:6px}
+.live-counter-title h2{font-family:Georgia,serif;font-size:32px;margin:0}
+.live-counter-card{max-width:760px;margin:auto;background:#0f1b2d;border:2px solid #c9922a;border-radius:12px;padding:20px 24px;display:flex;align-items:center;justify-content:center;gap:18px;box-shadow:0 12px 28px #0f1b2d20}
+.live-icon{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:#c9922a;color:#0f1b2d;font-size:25px;flex:none}
+.live-text{text-align:left}
+.live-text strong{display:block;color:#fff;font-size:17px}
+.live-text small{display:block;color:#cbd0d8;margin-top:2px}
+.live-number{font-family:Georgia,serif;color:#c9922a;font-size:38px;font-weight:700;min-width:80px;text-align:center}
+.live-note{text-align:center;color:#6b7280;font-size:11px;margin-top:9px}
 
 .section-head{margin-bottom:38px}
 .section-head p{color:#666;max-width:700px}
@@ -92,9 +105,6 @@ textarea{resize:vertical}
 
 /* Garments ERP Sticky Notes */
 .erp-sticky-wrap{margin-top:58px}
-.erp-sticky-title{text-align:center;margin-bottom:28px}
-.erp-sticky-title h3{font-family:Georgia,serif;font-size:28px;margin-bottom:8px}
-.erp-sticky-title p{color:#666;font-size:14px}
 .sticky-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:12px 8px 20px}
 .sticky-note{position:relative;min-height:190px;padding:28px 22px 22px;border-radius:3px;color:#243044;box-shadow:0 12px 22px #0f1b2d1c;transition:.25s;overflow:hidden}
 .sticky-note::before{content:"";position:absolute;top:-2px;left:50%;transform:translateX(-50%) rotate(-2deg);width:72px;height:22px;background:#ffffff8c;box-shadow:0 1px 3px #0001}
@@ -114,23 +124,6 @@ textarea{resize:vertical}
 .sticky-cta{margin-top:22px;text-align:center}
 .sticky-cta span{display:inline-block;background:#0f1b2d;color:#fff;padding:10px 16px;border-radius:4px;font-size:13px;font-weight:700}
 
-/* REAL GOATCOUNTER TOTAL — prominent at top */
-.live-counter-section{padding:22px 0 30px;background:#f7f5f1}
-.live-counter-title{text-align:center;color:#0f1b2d;margin-bottom:12px}
-.live-counter-title .eyebrow{margin-bottom:6px}
-.live-counter-title h2{font-family:Georgia,serif;font-size:32px;margin:0}
-.live-counter-card{max-width:760px;margin:auto;background:#0f1b2d;border:2px solid #c9922a;border-radius:12px;padding:20px 24px;display:flex;align-items:center;justify-content:center;gap:18px;box-shadow:0 12px 28px #0f1b2d20}
-.live-icon{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:#c9922a;color:#0f1b2d;font-size:25px;flex:none}
-.live-text{text-align:left}
-.live-text strong{display:block;color:#fff;font-size:17px}
-.live-text small{display:block;color:#cbd0d8;margin-top:2px}
-.live-number{font-family:Georgia,serif;color:#c9922a;font-size:38px;font-weight:700;min-width:80px;text-align:center}
-.live-note{text-align:center;color:#6b7280;font-size:11px;margin-top:9px}
-
-/* GoatCounter renders the real TOTAL here */
-#goatcounter-total{display:none}
-
-/* Keep GoatCounter branding/count hidden at the old footer position */
 footer{background:#0f1b2d;color:#cbd0d8;padding:38px 0}
 .footer-row{display:flex;justify-content:space-between;gap:30px;align-items:center}
 .copyright{text-align:center;font-size:12px;border-top:1px solid #ffffff15;margin-top:25px;padding-top:20px}
@@ -164,8 +157,12 @@ h2{font-size:34px}
 <button class="menu" onclick="toggleMenu()" aria-label="Open menu">☰</button>
 <nav>
 <div class="links" id="navLinks">
-<a href="#home">Home</a><a href="#services">Services</a><a href="#products">Products</a>
-<a href="#about">About</a><a href="#portfolio">Portfolio</a><a href="#contact">Contact</a>
+<a href="#home">Home</a>
+<a href="#services">Services</a>
+<a href="#products">Products</a>
+<a href="#about">About</a>
+<a href="#portfolio">Portfolio</a>
+<a href="#contact">Contact</a>
 </div>
 </nav>
 </div>
@@ -198,7 +195,7 @@ h2{font-size:34px}
 
 <div class="divider"></div>
 
-<!-- REAL TOTAL VISITS AT THE TOP -->
+<!-- REAL GOATCOUNTER TOTAL AT THE TOP -->
 <section class="live-counter-section" aria-label="Website visitor statistics">
 <div class="container">
 <div class="live-counter-title">
@@ -363,51 +360,48 @@ function toggleMenu(){
 }
 
 /*
-  GoatCounter TOTAL counter.
-  GoatCounter supports the special path TOTAL for site-wide totals.
-  The result is inserted into our own ERP-theme card above.
+  Load the REAL GoatCounter site total.
+  GoatCounter documents the special path "TOTAL" for site totals.
+  The response may be cached for up to four hours.
 */
 (function(){
-  var output = document.getElementById('goatcounter-total-number');
+  const output = document.getElementById('goatcounter-total-number');
   if(!output) return;
 
-  var timer = setInterval(function(){
-    if(window.goatcounter && typeof window.goatcounter.visit_count === 'function'){
-      clearInterval(timer);
-      try{
-        window.goatcounter.visit_count({
-          path: 'TOTAL',
-          append: false,
-          no_branding: true,
-          callback: function(count){
-            output.textContent = Number(count || 0).toLocaleString();
-          }
-        });
-      }catch(e){
+  const url = 'https://hfbsolutions2026.goatcounter.com/counter/TOTAL.json';
+
+  fetch(url, {cache:'no-store'})
+    .then(function(response){
+      if(!response.ok) throw new Error('GoatCounter request failed');
+      return response.json();
+    })
+    .then(function(data){
+      if(data && data.count !== undefined){
+        output.textContent = data.count;
+      }else{
         output.textContent = '—';
       }
-    }
-  },100);
-
-  setTimeout(function(){
-    clearInterval(timer);
-    if(output.textContent === 'Loading…') output.textContent = '—';
-  },10000);
+    })
+    .catch(function(){
+      output.textContent = '—';
+    });
 })();
 
 function sendEmail(event){
   event.preventDefault();
-  var name = document.getElementById('name').value.trim();
-  var email = document.getElementById('email').value.trim();
-  var message = document.getElementById('message').value.trim();
-  var subject = encodeURIComponent('HFB Solutions Website Inquiry');
-  var body = encodeURIComponent(
+
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+  const subject = encodeURIComponent('HFB Solutions Website Enquiry');
+  const body = encodeURIComponent(
     'Name: ' + name + '\n' +
     'Email: ' + email + '\n\n' +
     'Message:\n' + message
   );
-  document.getElementById('formNotice').style.display='block';
-  window.location.href='mailto:shamilsiki@gmail.com?subject='+subject+'&body='+body;
+
+  document.getElementById('formNotice').style.display = 'block';
+  window.location.href = 'mailto:shamilsiki@gmail.com?subject=' + subject + '&body=' + body;
 }
 </script>
 </body>
