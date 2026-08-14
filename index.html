@@ -3,7 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="HFB Solutions - Software, ERP, POS and business technology solutions.">
+<meta name="description" content="HFB Solutions provides practical ERP, POS, payroll, HR, office management, custom software and web solutions for growing businesses.">
+<meta name="keywords" content="HFB Solutions, Garments ERP, ERP Software, POS Software, Payroll Software, HR Software, Office Management, Custom Software, Business Automation">
+<meta name="author" content="HFB Solutions">
+<meta property="og:title" content="HFB Solutions | Software & Business Technology Solutions">
+<meta property="og:description" content="Practical ERP, POS, payroll, HR, office management and custom software solutions.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hfb-web.github.io/hfb-solutions-website/">
+<link rel="canonical" href="https://hfb-web.github.io/hfb-solutions-website/">
 <link rel="canonical" href="https://hfb-web.github.io/hfb-solutions-website/">
 <title>HFB Solutions | Software & Technology Solutions</title>
 
@@ -78,9 +85,24 @@ h3{font-size:18px;margin-bottom:8px}
 .product p{font-size:14px;color:#606060;margin:8px 0 18px}
 .product-link{font-weight:700;color:#0f1b2d}
 
+
+.roadmap{background:#fff}
+.roadmap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.roadmap-card{background:#fdfcf9;border:1px solid #e5e1d8;border-top:4px solid #c9922a;padding:24px;border-radius:5px}
+.roadmap-card .icon{font-size:30px}
+.roadmap-card p{font-size:14px;color:#606060}
+.roadmap-card small{display:inline-block;margin-top:15px;padding:5px 9px;background:#0f1b2d;color:#fff;border-radius:3px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px}
 .values{display:grid;gap:15px}
 .value{background:#fff;border:1px solid #e5e1d8;padding:22px}
+
+
+.serve{background:#f1eee7}
+.serve-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.serve-card{background:#fff;padding:20px;text-align:center;border:1px solid #e5e1d8;border-radius:5px}
+.serve-card .icon{font-size:25px;margin-bottom:8px}
+.serve-card h3{font-size:16px}
 
 .portfolio{background:#0f1b2d;color:#fff}
 .portfolio .section-head p{color:#d7dae0}
@@ -128,7 +150,7 @@ footer{background:#0f1b2d;color:#cbd0d8;padding:38px 0}
 .footer-row{display:flex;justify-content:space-between;gap:30px;align-items:center}
 .copyright{text-align:center;font-size:12px;border-top:1px solid #ffffff15;margin-top:25px;padding-top:20px}
 
-@media(max-width:900px){.sticky-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){.sticky-grid{grid-template-columns:repeat(2,1fr)}.serve-grid{grid-template-columns:repeat(2,1fr)}.roadmap-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:800px){
 .links{display:none;position:absolute;top:70px;left:0;width:100%;background:#0f1b2d;flex-direction:column;padding:12px 5%;border-top:1px solid #ffffff15}
 .links.open{display:flex}
@@ -139,7 +161,7 @@ footer{background:#0f1b2d;color:#cbd0d8;padding:38px 0}
 }
 @media(max-width:560px){
 section{padding:60px 0}
-.cards,.product-grid,.portfolio-grid,.sticky-grid{grid-template-columns:1fr}
+.cards,.product-grid,.portfolio-grid,.sticky-grid,.roadmap-grid{grid-template-columns:1fr}
 h2{font-size:34px}
 .footer-row{flex-direction:column;align-items:flex-start}
 .sticky-note{min-height:175px}
@@ -159,7 +181,7 @@ h2{font-size:34px}
 <div class="links" id="navLinks">
 <a href="#home">Home</a>
 <a href="#services">Services</a>
-<a href="#products">Products</a>
+<a href="#products">Products</a><a href="#roadmap">Coming Soon</a>
 <a href="#about">About</a>
 <a href="#portfolio">Portfolio</a>
 <a href="#contact">Contact</a>
@@ -174,7 +196,7 @@ h2{font-size:34px}
 <div>
 <div class="eyebrow">Software & Technology Solutions</div>
 <h1>Practical software for modern businesses.</h1>
-<p class="lead">HFB Solutions develops business software, ERP systems, POS solutions and custom digital tools designed around the way real businesses work.</p>
+<p class="lead">HFB Solutions develops practical ERP, POS, payroll, HR, office management, custom software and web solutions designed around the way real businesses work.</p>
 <div class="buttons">
 <a class="btn btn-primary" href="#products">Explore Our Products →</a>
 <a class="btn btn-light" href="#contact">Get in Touch</a>
@@ -186,8 +208,9 @@ h2{font-size:34px}
 <div class="mini-list">
 <div><span>01</span> Business Software</div>
 <div><span>02</span> ERP & POS Solutions</div>
-<div><span>03</span> Custom Development</div>
-<div><span>04</span> Business Automation</div>
+<div><span>03</span> Payroll & HR Systems</div>
+<div><span>04</span> Custom Software</div>
+<div><span>05</span> Business Automation</div>
 </div>
 </div>
 </div>
@@ -225,6 +248,7 @@ h2{font-size:34px}
 <div class="card"><div class="icon">▣</div><h3>Custom Software Development</h3><p>Business applications designed for specific workflows, requirements and operations.</p></div>
 <div class="card"><div class="icon">▦</div><h3>ERP Solutions</h3><p>Integrated systems for managing products, customers, sales, inventory, production and business data.</p></div>
 <div class="card"><div class="icon">₨</div><h3>POS Solutions</h3><p>Point-of-sale systems for businesses that need faster sales, stock and customer management.</p></div>
+<div class="card"><div class="icon">👥</div><h3>HR & Payroll Systems</h3><p>Planned business systems for employee records, payroll and HR processes.</p></div>
 <div class="card"><div class="icon">⌘</div><h3>Web Development</h3><p>Professional business websites and web-based applications for growing companies.</p></div>
 <div class="card"><div class="icon">⚙</div><h3>Business Automation</h3><p>Reduce repetitive work by turning manual processes into organized digital workflows.</p></div>
 <div class="card"><div class="icon">☁</div><h3>Data & Management Systems</h3><p>Structured databases and management tools that keep important business information organized.</p></div>
@@ -244,6 +268,22 @@ h2{font-size:34px}
 <div class="product"><span class="badge soon">Coming Soon</span><h3>Garments POS</h3><p>A planned point-of-sale solution for garment retail operations, sales and stock management.</p></div>
 <div class="product"><span class="badge soon">Coming Soon</span><h3>Grocery ERP</h3><p>An industry-specific business management solution planned for grocery and retail operations.</p></div>
 <div class="product"><span class="badge soon">Coming Soon</span><h3>Pharmacy ERP</h3><p>A planned solution for pharmacy and inventory management.</p></div>
+</div>
+</div>
+</section>
+
+
+<section class="roadmap" id="roadmap">
+<div class="container">
+<div class="section-head">
+<div class="eyebrow">Product Roadmap</div>
+<h2>More solutions are on the way.</h2>
+<p>These software products are planned for future development and will expand HFB Solutions beyond industry-specific ERP.</p>
+</div>
+<div class="roadmap-grid">
+<div class="roadmap-card"><div class="icon">💰</div><h3>Payroll Management System</h3><p>Designed to organize employee salaries, allowances, deductions, payroll records and salary-related processes.</p><small>Coming Soon</small></div>
+<div class="roadmap-card"><div class="icon">👥</div><h3>HR Management System</h3><p>Designed for employee records, departments, attendance, leave management and everyday HR information.</p><small>Coming Soon</small></div>
+<div class="roadmap-card"><div class="icon">🏢</div><h3>Office Management System</h3><p>Planned software for organizing office administration, employee information, records and routine workflows.</p><small>Coming Soon</small></div>
 </div>
 </div>
 </section>
@@ -268,6 +308,23 @@ h2{font-size:34px}
 <div class="sticky-note sticky-gold"><div class="sticky-number">08 · ROADMAP</div><h3>🚀 Coming Features</h3><p>Additional modules and improvements can be added as the HFB Solutions Garments ERP grows.</p></div>
 </div>
 <div class="sticky-cta"><span>Garments ERP • Practical • Organized • Business Ready</span></div>
+</div>
+</div>
+</section>
+
+
+<section class="serve" id="who-we-serve">
+<div class="container">
+<div class="section-head">
+<div class="eyebrow">Who We Serve</div>
+<h2>Software for different business needs.</h2>
+<p>HFB Solutions is building practical systems for industry-specific businesses as well as offices and growing companies.</p>
+</div>
+<div class="serve-grid">
+<div class="serve-card"><div class="icon">👕</div><h3>Garment Businesses</h3></div>
+<div class="serve-card"><div class="icon">🛍️</div><h3>Retail Businesses</h3></div>
+<div class="serve-card"><div class="icon">🏢</div><h3>Offices</h3></div>
+<div class="serve-card"><div class="icon">📈</div><h3>Growing Companies</h3></div>
 </div>
 </div>
 </section>
@@ -319,7 +376,7 @@ h2{font-size:34px}
 
 <div class="contact-grid">
 <div>
-<div class="contact-item"><div class="contact-icon">✉</div><div><strong>Email</strong><br><a href="mailto:shamilsiki@gmail.com">shamilsiki@gmail.com</a></div></div>
+<div class="contact-item"><div class="contact-icon">✉</div><div><strong>Email</strong><br><a href="mailto:hfbsolutions.2026@gmail.com">hfbsolutions.2026@gmail.com</a></div></div>
 <div class="contact-item"><div class="contact-icon">☎</div><div><strong>Phone</strong><br><a href="tel:+923120979959">+923120979959</a></div></div>
 <div class="contact-item"><div class="contact-icon">💬</div><div><strong>WhatsApp</strong><br><a href="https://wa.me/923459748951" target="_blank" rel="noopener">+923459748951</a></div></div>
 <div class="contact-item"><div class="contact-icon">📍</div><div><strong>Location</strong><br>Pakistan</div></div>
@@ -401,7 +458,7 @@ function sendEmail(event){
   );
 
   document.getElementById('formNotice').style.display = 'block';
-  window.location.href = 'mailto:shamilsiki@gmail.com?subject=' + subject + '&body=' + body;
+  window.location.href = 'mailto:hfbsolutions.2026@gmail.com?subject=' + subject + '&body=' + body;
 }
 </script>
 </body>
