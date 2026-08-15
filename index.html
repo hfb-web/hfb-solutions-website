@@ -241,23 +241,32 @@ function sendEmail(e){
  new MutationObserver(removeGoatCounterWidgets).observe(document.body,{childList:true,subtree:true});
 })();
 
-/* Existing GoatCounter configuration preserved */
+/* GoatCounter tracking + custom top-right total counter.
+   We deliberately do NOT call goatcounter.visit_count(), because that method
+   creates GoatCounter's default visitor-count box. Instead, we read the site-wide
+   TOTAL as JSON and put only the number into our custom ERP-theme card.
+*/
 const goatScript=document.createElement('script');
 goatScript.dataset.goatcounter='https://hfbsolutions2026.goatcounter.com/count';
-goatScript.async=true; goatScript.src='https://gc.zgo.at/count.js'; document.head.appendChild(goatScript);
+goatScript.async=true;
+goatScript.src='https://gc.zgo.at/count.js';
+document.head.appendChild(goatScript);
 
 (function(){
- const output=document.getElementById('goatcounter-total-number'); let tries=0;
- const timer=setInterval(function(){
-  tries++;
-  if(window.goatcounter && typeof window.goatcounter.visit_count==='function'){
-   clearInterval(timer);
-   window.goatcounter.visit_count({path:'TOTAL',callback:function(res){
-    output.textContent=(res && res.count!=null)?res.count:'—';
-   }});
-  }
-  if(tries>80)clearInterval(timer);
- },250);
+ const output=document.getElementById('goatcounter-total-number');
+ if(!output) return;
+ const endpoint='https://hfbsolutions2026.goatcounter.com/counter/TOTAL.json';
+ fetch(endpoint, {method:'GET', cache:'no-store'})
+   .then(function(response){
+     if(!response.ok) throw new Error('GoatCounter response '+response.status);
+     return response.json();
+   })
+   .then(function(data){
+     output.textContent = (data && data.count != null) ? data.count : '—';
+   })
+   .catch(function(){
+     output.textContent = '—';
+   });
 })();
 </script>
 </body>
