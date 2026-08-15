@@ -59,13 +59,14 @@ input,textarea{width:100%;padding:12px;border:1px solid #d8d4ca;border-radius:4p
 .sticky-cyan{background:#aeeff0;transform:rotate(-1deg)}.sticky-gold{background:#ffe38f;transform:rotate(.8deg)}
 .sticky-cta{margin-top:22px;text-align:center}.sticky-cta span{display:inline-block;background:#0f1b2d;color:#fff;padding:10px 16px;border-radius:4px;font-size:13px;font-weight:700}
 
-/* Existing real GoatCounter card preserved */
-.live-counter-section{padding:22px 0 30px;background:#f7f5f1}.live-counter-title{text-align:center;color:#0f1b2d;margin-bottom:12px}
-.live-counter-title .eyebrow{margin-bottom:6px}.live-counter-title h2{font-family:Georgia,serif;font-size:32px;margin:0}
-.live-counter-card{max-width:760px;margin:auto;background:#0f1b2d;border:2px solid #c9922a;border-radius:12px;padding:20px 24px;display:flex;align-items:center;justify-content:center;gap:18px;box-shadow:0 12px 28px #0f1b2d20}
-.live-icon{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:#c9922a;color:#0f1b2d;font-size:25px;flex:none}
-.live-text{text-align:left}.live-text strong{display:block;color:#fff;font-size:17px}.live-text small{display:block;color:#cbd0d8;margin-top:2px}
-.live-number{font-family:Georgia,serif;color:#c9922a;font-size:38px;font-weight:700;min-width:80px;text-align:center}.live-note{text-align:center;color:#6b7280;font-size:11px;margin-top:9px}
+/* TOP-RIGHT REAL GOATCOUNTER VISITOR COUNTER */
+.hero{position:relative}
+.top-visitor-counter{position:absolute;top:22px;right:0;z-index:5;display:flex;align-items:center;gap:11px;background:#0f1b2d;color:#fff;border:2px solid #c9922a;border-radius:10px;padding:10px 14px;box-shadow:0 8px 22px #0f1b2d20;min-width:210px}
+.top-visitor-icon{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:#c9922a;color:#0f1b2d;font-size:18px;flex:none}
+.top-visitor-label{font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#cbd0d8;line-height:1.2}
+.top-visitor-count{font-family:Georgia,serif;color:#c9922a;font-size:25px;font-weight:700;line-height:1.1;margin-top:2px}
+.top-visitor-note{font-size:9px;color:#9fa7b3;margin-top:1px}
+#goatcounter-total{display:none}
 
 /* New screenshots / demo section */
 .demo-section{background:#fff}.demo-intro{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:35px}
@@ -86,7 +87,7 @@ footer{background:#0f1b2d;color:#cbd0d8;padding:38px 0}.footer-row{display:flex;
 .copyright{text-align:center;font-size:12px;border-top:1px solid #ffffff15;margin-top:25px;padding-top:20px}
 @media(max-width:900px){.sticky-grid{grid-template-columns:repeat(2,1fr)}.demo-grid{grid-template-columns:repeat(2,1fr)}.demo-intro{align-items:flex-start;flex-direction:column}.lightbox-prev{left:5px}.lightbox-next{right:5px}}
 @media(max-width:800px){.links{display:none;position:absolute;top:70px;left:0;width:100%;background:#0f1b2d;flex-direction:column;padding:12px 5%;border-top:1px solid #ffffff15}.links.open{display:flex}.menu{display:block}.hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}.cards,.portfolio-grid{grid-template-columns:1fr 1fr}.cta-box{flex-direction:column;align-items:flex-start}}
-@media(max-width:560px){section{padding:60px 0}.cards,.product-grid,.portfolio-grid,.sticky-grid,.demo-grid{grid-template-columns:1fr}h2{font-size:34px}.footer-row{flex-direction:column;align-items:flex-start}.sticky-note{min-height:175px}.live-counter-card{padding:18px 14px;gap:12px}.live-counter-title h2{font-size:28px}.live-number{font-size:32px;min-width:55px}.demo-card img{height:220px}.lightbox{padding:12px}}
+@media(max-width:560px){section{padding:60px 0}.cards,.product-grid,.portfolio-grid,.sticky-grid,.demo-grid{grid-template-columns:1fr}h2{font-size:34px}.footer-row{flex-direction:column;align-items:flex-start}.sticky-note{min-height:175px}.top-visitor-counter{position:relative;top:auto;right:auto;width:max-content;max-width:calc(100% - 28px);margin:12px 14px 0 auto;min-width:0;padding:9px 12px}.top-visitor-count{font-size:23px}.top-visitor-icon{width:32px;height:32px;font-size:16px}.demo-card img{height:220px}.lightbox{padding:12px}}
 </style>
 </head>
 <body>
@@ -98,7 +99,8 @@ footer{background:#0f1b2d;color:#cbd0d8;padding:38px 0}.footer-row{display:flex;
 </div></nav></div></header>
 
 <main>
-<section class="hero" id="home"><div class="container hero-grid"><div>
+<section class="hero" id="home"><div class="top-visitor-counter" aria-label="Website visitor counter">
+<div class="top-visitor-icon">👥</div><div><div class="top-visitor-label">Website Visitors</div><div class="top-visitor-count" id="goatcounter-total-number">Loading…</div><div class="top-visitor-note">Live total visits</div></div></div><div class="container hero-grid"><div>
 <div class="eyebrow">Software & Technology Solutions</div><h1>Practical software for modern businesses.</h1>
 <p class="lead">HFB Solutions develops business software, ERP systems, POS solutions and custom digital tools designed around the way real businesses work.</p>
 <div class="buttons"><a class="btn btn-primary" href="#products">Explore Our Products →</a><a class="btn btn-light" href="#contact">Get in Touch</a></div>
@@ -106,9 +108,6 @@ footer{background:#0f1b2d;color:#cbd0d8;padding:38px 0}.footer-row{display:flex;
 <div class="mini-list"><div><span>01</span> Business Software</div><div><span>02</span> ERP & POS Solutions</div><div><span>03</span> Custom Development</div><div><span>04</span> Business Automation</div></div></div></div></section>
 <div class="divider"></div>
 
-<section class="live-counter-section"><div class="container"><div class="live-counter-title"><div class="eyebrow">HFB SOLUTIONS LIVE STATISTICS</div><h2>Website Visitors</h2></div>
-<div class="live-counter-card"><div class="live-icon">👥</div><div class="live-text"><strong>Total Visits</strong><small>Thank you for visiting HFB Solutions</small></div><div class="live-number" id="goatcounter-total-number">Loading…</div></div>
-<div class="live-note">Live total visits • Powered by GoatCounter</div></div></section>
 
 <section id="services"><div class="container"><div class="section-head"><div class="eyebrow">Our Services</div><h2>Solutions built around your business.</h2><p>From ready-made business products to custom software, HFB Solutions focuses on useful technology rather than unnecessary complexity.</p></div>
 <div class="cards">
@@ -232,6 +231,15 @@ function sendEmail(e){
  const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\n\n'+message);
  window.location.href='mailto:hfbsolutions.2026@gmail.com?subject='+subject+'&body='+body;
 }
+
+/* Keep only the custom ERP-theme counter visible; never append GoatCounter's default visitor-count widget. */
+(function(){
+ const removeGoatCounterWidgets=function(){
+  document.querySelectorAll('#gcvc, [id^="gcvc"], .goatcounter-visitor-count').forEach(function(el){el.remove();});
+ };
+ removeGoatCounterWidgets();
+ new MutationObserver(removeGoatCounterWidgets).observe(document.body,{childList:true,subtree:true});
+})();
 
 /* Existing GoatCounter configuration preserved */
 const goatScript=document.createElement('script');
